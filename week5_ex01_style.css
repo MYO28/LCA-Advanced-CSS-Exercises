@@ -1,0 +1,175 @@
+/* Color Palette and Variables */
+:root {
+  --brand-green: #4caf50;
+  --brand-dark: #388e3c;
+  --surface: #ffffff;
+  --background: #f8f9fa;
+  --text-primary: #2d3436;
+  --text-muted: #a0a0a0;
+  --shadow-subtle: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Global Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family:
+    "Inter",
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
+  background-color: var(--background);
+  color: var(--text-primary);
+  line-height: 1.5;
+}
+
+/* Header Styling */
+.main-header {
+  background-color: var(--surface);
+  padding: 3.5rem 1rem;
+  text-align: center;
+  border-bottom: 1px solid #e0e0e0;
+  margin-bottom: 3rem;
+}
+
+.main-header h1 {
+  display: inline-block;
+  font-weight: 300;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  /* Underline removed here */
+  text-decoration: none;
+}
+
+/* Section Title - Centered and Moved Up per image_9a9597.png */
+.section-title {
+  text-align: center;
+  font-size: 1.8rem;
+  margin-top: -1.5rem; /* Pulls text upward closer to header */
+  margin-bottom: 2rem;
+  color: var(--text-primary);
+  font-weight: 600;
+
+  text-decoration: underline;
+  text-decoration-style: solid; /* Ensures the line is straight */
+  text-decoration-color: var(--brand-green); /* Matches your brand color */
+  text-underline-offset: 8px; /* Adds a clean gap between text and line */
+}
+
+/* Responsive Grid Logic */
+.showcase-grid {
+  display: grid;
+  gap: 2rem;
+  justify-content: center;
+  max-width: 1200px;
+  margin: 0 auto 4rem;
+  /* Desktop Default: 3 Columns */
+  grid-template-columns: repeat(3, 300px);
+}
+
+/* Tablet: 2 Columns */
+@media (max-width: 768px) {
+  .showcase-grid {
+    grid-template-columns: repeat(2, 300px);
+  }
+}
+
+/* Mobile: 1 Column */
+@media (max-width: 480px) {
+  .showcase-grid {
+    grid-template-columns: repeat(1, 300px);
+  }
+}
+
+/* Card Presentation */
+.product-card {
+  position: relative; /* Context for sale badge */
+  background-color: var(--surface);
+  width: 300px;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: var(--shadow-subtle);
+  transition:
+    transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+}
+
+.product-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Sale Badge */
+.sale-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: #ff7675;
+  color: white;
+  padding: 4px 10px;
+  font-size: 0.7rem;
+  font-weight: bold;
+  border-radius: 4px;
+  z-index: 2;
+}
+
+.card-img {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.card-body {
+  text-align: center;
+}
+
+.item-title {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+/* Price logic per image_9b113d.png */
+.price-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1.25rem;
+}
+
+.item-price {
+  font-size: 1.25rem;
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.old-price {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  text-decoration: line-through;
+  margin-top: 2px;
+}
+
+/* Button Component */
+.cart-button {
+  background-color: var(--brand-green);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 600;
+  width: 100%;
+  transition: background-color 0.2s ease;
+}
+
+.cart-button:hover {
+  background-color: var(--brand-dark);
+}
