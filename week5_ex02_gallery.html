@@ -1,0 +1,472 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Image Gallery</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        padding: 40px 20px;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      h1 {
+        text-align: center;
+        color: white;
+        margin-bottom: 40px;
+        font-size: 2.5rem;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      }
+
+      /* Filter Buttons */
+      .filter-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        margin-bottom: 40px;
+        flex-wrap: wrap;
+      }
+
+      .filter-btn {
+        padding: 12px 28px;
+        border: 2px solid white;
+        background: transparent;
+        color: white;
+        font-size: 1rem;
+        font-weight: 600;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .filter-btn:hover,
+      .filter-btn.active {
+        background: white;
+        color: #667eea;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      }
+
+      /* Gallery Grid */
+      .gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 25px;
+      }
+
+      .gallery-item {
+        background: white;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        transition:
+          transform 0.3s ease,
+          box-shadow 0.3s ease;
+        cursor: pointer;
+      }
+
+      .gallery-item:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+      }
+
+      .gallery-item.hidden {
+        display: none;
+      }
+
+      /* Image Container */
+      .image-container {
+        position: relative;
+        width: 100%;
+        height: 250px;
+        overflow: hidden;
+        background: #f0f0f0;
+      }
+
+      .image-container img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+      }
+
+      .gallery-item:hover .image-container img {
+        transform: scale(1.1);
+      }
+
+      /* Overlay */
+      .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.8);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        padding: 20px;
+        text-align: center;
+      }
+
+      .overlay-text {
+        color: white;
+        font-size: 0.95rem;
+        line-height: 1.5;
+      }
+
+      .gallery-item:hover .overlay {
+        opacity: 1;
+      }
+
+      /* Card Content */
+      .card-content {
+        padding: 15px;
+      }
+
+      .card-title {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: #333;
+        margin-bottom: 8px;
+      }
+
+      .category-tag {
+        display: inline-block;
+        padding: 6px 12px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        h1 {
+          font-size: 1.8rem;
+        }
+
+        .gallery {
+          grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+          gap: 15px;
+        }
+
+        .image-container {
+          height: 200px;
+        }
+
+        .filter-buttons {
+          gap: 10px;
+        }
+
+        .filter-btn {
+          padding: 10px 20px;
+          font-size: 0.9rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Photo Gallery</h1>
+
+      <div class="filter-buttons">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="landscapes">Landscapes</button>
+        <button class="filter-btn" data-filter="portraits">Portraits</button>
+        <button class="filter-btn" data-filter="architecture">
+          Architecture
+        </button>
+      </div>
+
+      <div class="gallery">
+        <!-- Image 1 -->
+        <div class="gallery-item" data-category="landscapes">
+          <div class="image-container">
+            <img
+              src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop"
+              alt="Mountain landscape"
+            />
+            <div class="overlay">
+              <div class="overlay-text">
+                Majestic snow-capped mountains rising above the clouds at dawn
+              </div>
+            </div>
+          </div>
+          <div class="card-content">
+            <div class="card-title">Alpine Heights</div>
+            <span class="category-tag">Landscapes</span>
+          </div>
+        </div>
+
+        <!-- Image 2 -->
+        <div class="gallery-item" data-category="landscapes">
+          <div class="image-container">
+            <img
+              src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400&h=300&fit=crop"
+              alt="Ocean waves"
+            />
+            <div class="overlay">
+              <div class="overlay-text">
+                Turquoise waves crashing on pristine sandy beaches
+              </div>
+            </div>
+          </div>
+          <div class="card-content">
+            <div class="card-title">Coastal Paradise</div>
+            <span class="category-tag">Landscapes</span>
+          </div>
+        </div>
+
+        <!-- Image 3 -->
+        <div class="gallery-item" data-category="landscapes">
+          <div class="image-container">
+            <img
+              src="https://media.istockphoto.com/id/1419410282/photo/silent-forest-in-spring-with-beautiful-bright-sun-rays.jpg?s=612x612&w=0&k=20&c=UHeb1pGOw6ozr6utsenXHhV19vW6oiPIxDqhKCS2Llk="
+              alt="Forest landscape"
+            />
+            <div class="overlay">
+              <div class="overlay-text">
+                Ancient forest bathed in golden morning sunlight
+              </div>
+            </div>
+          </div>
+          <div class="card-content">
+            <div class="card-title">Enchanted Forest</div>
+            <span class="category-tag">Landscapes</span>
+          </div>
+        </div>
+
+        <!-- Image 4 -->
+        <div class="gallery-item" data-category="landscapes">
+          <div class="image-container">
+            <img
+              src="https://forevertourism.com/wp-content/uploads/2025/09/serene-desert-landscape-at-sunset-with-footprints-on-a-dune-crest-dubai-uae-photo-4.webp"
+              alt="Desert sunset"
+            />
+            <div class="overlay">
+              <div class="overlay-text">
+                Golden hour casting long shadows across endless sand dunes
+              </div>
+            </div>
+          </div>
+          <div class="card-content">
+            <div class="card-title">Desert Sunset</div>
+            <span class="category-tag">Landscapes</span>
+          </div>
+        </div>
+
+        <!-- Image 5 -->
+        <div class="gallery-item" data-category="portraits">
+          <div class="image-container">
+            <img
+              src="https://images.stockcake.com/public/5/e/a/5ea0f61b-6454-474f-9795-1e3e24de0d42_large/joyful-urban-professional-stockcake.jpg"
+              alt="Portrait male"
+            />
+            <div class="overlay">
+              <div class="overlay-text">
+                Professional portrait with natural lighting and confident
+                expression
+              </div>
+            </div>
+          </div>
+          <div class="card-content">
+            <div class="card-title">Urban Professional</div>
+            <span class="category-tag">Portraits</span>
+          </div>
+        </div>
+
+        <!-- Image 6 -->
+        <div class="gallery-item" data-category="portraits">
+          <div class="image-container">
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTapPN1fBpdPJ-4mDxWtM5KFb4VLRnMnzhdeg&s"
+              alt="Portrait female"
+            />
+            <div class="overlay">
+              <div class="overlay-text">
+                A bright and natural outdoor portrait capturing a moment of pure
+                joy and effortless style.
+              </div>
+            </div>
+          </div>
+          <div class="card-content">
+            <div class="card-title">Genuine Smile</div>
+            <span class="category-tag">Portraits</span>
+          </div>
+        </div>
+
+        <!-- Image 7 -->
+        <div class="gallery-item" data-category="portraits">
+          <div class="image-container">
+            <img
+              src="https://images.pexels.com/photos/30451289/pexels-photo-30451289/free-photo-of-portrait-of-fashion-forward-individual-in-paris-street.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+              alt="Fashion portrait"
+            />
+            <div class="overlay">
+              <div class="overlay-text">
+                A striking street-style portrait showcasing a unique blend of
+                retro eyewear, bold colors, and an edgy leather aesthetic.
+              </div>
+            </div>
+          </div>
+          <div class="card-content">
+            <div class="card-title">Fashion Forward</div>
+            <span class="category-tag">Portraits</span>
+          </div>
+        </div>
+
+        <!-- Image 8 -->
+        <div class="gallery-item" data-category="portraits">
+          <div class="image-container">
+            <img
+              src="https://thumbs.dreamstime.com/b/adventurous-best-friends-taking-selfie-giglio-island-luxury-speedboat-adventure-travel-lifestyle-enjoying-happy-fun-moment-55474867.jpg"
+              alt="Lifestyle portrait"
+            />
+            <div class="overlay">
+              <div class="overlay-text">
+                Lifestyle portrait capturing everyday moments with authenticity
+              </div>
+            </div>
+          </div>
+          <div class="card-content">
+            <div class="card-title">Lifestyle Moment</div>
+            <span class="category-tag">Portraits</span>
+          </div>
+        </div>
+
+        <!-- Image 9 -->
+        <div class="gallery-item" data-category="architecture">
+          <div class="image-container">
+            <img
+              src="https://img.freepik.com/free-photo/china-city-night_1127-3927.jpg?semt=ais_rp_50_assets&w=740&q=80"
+              alt="Modern building"
+            />
+            <div class="overlay">
+              <div class="overlay-text">
+                A vibrant city skyline illuminated at night, showcasing the
+                sleek glass facades and towering heights of a bustling urban
+                center.
+              </div>
+            </div>
+          </div>
+          <div class="card-content">
+            <div class="card-title">Modern Metropolis</div>
+            <span class="category-tag">Architecture</span>
+          </div>
+        </div>
+
+        <!-- Image 10 -->
+        <div class="gallery-item" data-category="architecture">
+          <div class="image-container">
+            <img
+              src="https://png.pngtree.com/thumb_back/fh260/background/20220510/pngtree-main-entrance-yard-of-the-qaitbay-fortress-citadel-a-historic-landmark-in-alexandria-egypt-photo-image_30313036.jpg"
+              alt="Historic building"
+            />
+            <div class="overlay">
+              <div class="overlay-text">
+                A 15th-century defensive fortress built by Sultan Al-Ashraf
+                Qaitbay on the Mediterranean coast in Alexandria, Egypt. It
+                stands on the exact site of the ancient Lighthouse of
+                Alexandria, utilizing its original stones for construction.
+              </div>
+            </div>
+          </div>
+          <div class="card-content">
+            <div class="card-title">Historic Landmark</div>
+            <span class="category-tag">Architecture</span>
+          </div>
+        </div>
+
+        <!-- Image 11 -->
+        <div class="gallery-item" data-category="architecture">
+          <div class="image-container">
+            <img
+              src="https://www.arhitekt11.ee/wp-content/uploads/2025/08/arhitekt11-arhitektuur-sisearhitektuur-rannamoisa-2.jpg"
+              alt="Interior design"
+            />
+            <div class="overlay">
+              <div class="overlay-text">
+                SA refined composition showcasing warm wood beams, sleek glass
+                walls, and minimalist furnishings that define high-end,
+                functional interior architecture.
+              </div>
+            </div>
+          </div>
+          <div class="card-content">
+            <div class="card-title">Interior Elegance</div>
+            <span class="category-tag">Architecture</span>
+          </div>
+        </div>
+
+        <!-- Image 12 -->
+        <div class="gallery-item" data-category="architecture">
+          <div class="image-container">
+            <img
+              src="https://static.vecteezy.com/system/resources/thumbnails/074/243/922/small/team-of-architects-reviewing-blueprints-discussing-project-plans-collaborating-on-design-details-free-photo.jpg"
+              alt="Architectural details"
+            />
+            <div class="overlay">
+              <div class="overlay-text">
+                From vision to blueprint: The foundation of great design..
+              </div>
+            </div>
+          </div>
+          <div class="card-content">
+            <div class="card-title">Design Details</div>
+            <span class="category-tag">Architecture</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Get all filter buttons and gallery items
+      const filterButtons = document.querySelectorAll(".filter-btn");
+      const galleryItems = document.querySelectorAll(".gallery-item");
+
+      // Add click event to each filter button
+      filterButtons.forEach((button) => {
+        button.addEventListener("click", function () {
+          const filter = this.getAttribute("data-filter");
+
+          // Update active button
+          filterButtons.forEach((btn) => btn.classList.remove("active"));
+          this.classList.add("active");
+
+          // Filter gallery items
+          galleryItems.forEach((item) => {
+            if (filter === "all") {
+              item.classList.remove("hidden");
+            } else {
+              const category = item.getAttribute("data-category");
+              if (category === filter) {
+                item.classList.remove("hidden");
+              } else {
+                item.classList.add("hidden");
+              }
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
