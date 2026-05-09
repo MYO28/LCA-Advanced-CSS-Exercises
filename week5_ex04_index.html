@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShopCo | Home</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="index.html">ShopCo</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navMenu">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="week5_ex04_index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="week5_ex04_products.html">Products</a></li>
+                    <li class="nav-item"><a class="nav-link" href="week5_ex04_about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="week5_ex04_contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></button>
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"></button>
+        </div>
+
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="bg-primary d-flex align-items-center justify-content-center text-white vh-100">
+                    <div class="text-center p-3">
+                        <h1 class="display-4 fw-bold">Welcome to ShopCo</h1>
+                        <p class="lead">Quality products for modern living</p>
+                        <a href="week5_ex04_products.html" class="btn btn-light btn-lg">Shop Now</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="carousel-item">
+                <div class="bg-success d-flex align-items-center justify-content-center text-white vh-100">
+                    <div class="text-center p-3">
+                        <h1 class="display-4 fw-bold">New Arrivals</h1>
+                        <p class="lead">Check out our latest products</p>
+                        <a href="week5_ex04_products.html" class="btn btn-light btn-lg">View Products</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="carousel-item">
+                <div class="bg-danger d-flex align-items-center justify-content-center text-white vh-100">
+                    <div class="text-center p-3">
+                        <h1 class="display-4 fw-bold">Big Sale Now!</h1>
+                        <p class="lead">Up to 50% off on selected items</p>
+                        <a href="week5_ex04_products.html" class="btn btn-light btn-lg">See Deals</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+    <div class="container my-5">
+    <h2 class="text-center mb-4">Why Shop With Us?</h2>
+    <div class="row g-4 text-center">
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="0">
+        <div class="card h-100 p-4 shadow-sm">
+          <div class="fs-1 mb-3">🚚</div>
+          <h5 class="card-title">Free & Fast Shipping</h5>
+          <p class="card-text text-muted">On all orders over R500, delivered right to your doorstep</p>
+          </div>
+      </div>
+      <div class="col-md-4" data-aos="fade up" data-aos-delay="150">
+        <div class="card h-100 p-4 shadow-sm">
+          <div class="fs-1 mb-3">↩️</div>
+          <h5 class="card-title">Easy Returns</h5>
+          <p class="card-text text-muted">30-Day Hassle-Free Returns, No Questions Asked</p>
+        </div>
+      </div>
+      </div>
+    </div>
+
+    <footer class="bg-dark text-white text-center py-3 mt-5">
+      <p class="mb-0">&copy; 2026 ShopCo. All rights reserved.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>AOS.init();</script>
+</body>
+</html>
